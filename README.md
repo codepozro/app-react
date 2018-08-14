@@ -2,17 +2,13 @@
 
 This project is a sample React application based on [React official tutorial](https://reactjs.org/tutorial/tutorial.html) and was created by:
 
-------
     $ npm install -g create-react-app
     $ create-react-app app-react
------- 
 
 To start the app, run:
 
-------
      $ cd app-react/
      $ npm start
-------
 
 # Auto-generated Content
 

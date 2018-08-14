@@ -119,7 +119,7 @@ function calculateWinner(squares) {
    ];
 
    require(Array.isArray(squares) && squares.length === 9, 'Array of 9 squares must be provided');
-   
+
    const wonLine = lines.find((line) => {
        const players = squares.filter((v,i) => line.includes(i)); // does it keep the order?
        return players.every((player) => player !== null && player === players[0]); // check if all squares are taken by the same player

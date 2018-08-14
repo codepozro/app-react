@@ -5,7 +5,7 @@ This project is a sample React application based on [React official tutorial](ht
     $ npm install -g create-react-app
     $ create-react-app app-react
 
-To start the app, run:
+To start the app at http://localhost:3000/, run:
 
      $ cd app-react/
      $ npm start

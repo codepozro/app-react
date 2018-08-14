@@ -1,6 +1,6 @@
 # React example
 
-This project is a sample React application based on https://reactjs.org/tutorial/tutorial.html and was created by:
+This project is a sample React application based on [React official tutorial](https://reactjs.org/tutorial/tutorial.html) and was created by:
 
 ------
     $ npm install -g create-react-app

@@ -11,15 +11,6 @@ class Board extends React.Component {
         }
     }
 
-    renderSquare(i) {
-        return (
-            <Square sqid={ i }
-                    takenBy={ this.state.squares[i] }
-                    onClick={() => this.handleClick(i)}
-            />
-        );
-    }
-
     handleClick(i) {
         // if there is a winner or the square has already been taken
         if (calculateWinner(this.state.squares) || this.state.squares[i]) {
@@ -41,23 +32,30 @@ class Board extends React.Component {
             <div>
                 <div className="status">{status}</div>
                 <div className="board-row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
+                    {renderSquares(this, [0,1,2])}
                 </div>
                 <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
+                    {renderSquares(this, [3,4,5])}
                 </div>
                 <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
+                    {renderSquares(this, [6,7,8])}
                 </div>
             </div>
         );
     }
+}
+
+function renderSquare(board, index) {
+    return (
+        <Square sqid={ index }
+                takenBy={ board.state.squares[index] }
+                onClick={() => board.handleClick(index)}
+        />
+    );
+}
+
+function renderSquares(board, indexes) {
+    return indexes.map((index) => renderSquare(board, index));
 }
 
 //TODO: try Symbol for private method

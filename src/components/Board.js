@@ -11,12 +11,6 @@ class Board extends React.Component {
         }
     }
 
-    // what is a React/ES6 way to define 'private' methods to this class?
-    nextPlayer() {
-        return this.state.isXNext ? 'X' : 'O';
-    }
-
-
     renderSquare(i) {
         return (
             <Square value={ (this.state.squares[i]) ? this.state.squares[i] : i }
@@ -32,7 +26,7 @@ class Board extends React.Component {
         }
 
         const state = JSON.parse(JSON.stringify(this.state)); // deep copy
-        state.squares[i] = this.nextPlayer();
+        state.squares[i] = nextPlayer(this.state.isXNext);
         state.isXNext = !this.state.isXNext;
         this.setState(state);
 
@@ -47,7 +41,7 @@ class Board extends React.Component {
     // when does render get called?
     render() {
         const maybeWinner = calculateWinner(this.state.squares);
-        const status = maybeWinner ? 'Winner: ' + maybeWinner : 'Next player: ' + this.nextPlayer();
+        const status = maybeWinner ? 'Winner: ' + maybeWinner : 'Next player: ' + nextPlayer(this.state.isXNext);
 
         return (
             <div>
@@ -70,6 +64,11 @@ class Board extends React.Component {
             </div>
         );
     }
+}
+
+//TODO: try Symbol for private method
+function nextPlayer(isXNext) {
+    return isXNext ? 'X' : 'O';
 }
 
 export default Board;

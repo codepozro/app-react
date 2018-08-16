@@ -11,14 +11,14 @@ class Board extends React.Component {
         }
     }
 
-    handleClick(i) {
+    handleSquareClick(index) {
         // if there is a winner or the square has already been taken
-        if (calculateWinner(this.state.squares) || this.state.squares[i]) {
+        if (calculateWinner(this.state.squares) || this.state.squares[index]) {
             return;
         }
 
         const state = JSON.parse(JSON.stringify(this.state)); // deep copy
-        state.squares[i] = nextPlayer(this.state.isXNext);
+        state.squares[index] = nextPlayer(this.state.isXNext);
         state.isXNext = !this.state.isXNext;
         this.setState(state);
     }
@@ -49,7 +49,7 @@ function renderSquare(board, index) {
     return (
         <Square sqid={ index }
                 takenBy={ board.state.squares[index] }
-                onClick={() => board.handleClick(index)}
+                onClick={() => board.handleSquareClick(index)}
         />
     );
 }

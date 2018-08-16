@@ -13,7 +13,8 @@ class Board extends React.Component {
 
     renderSquare(i) {
         return (
-            <Square value={ (this.state.squares[i]) ? this.state.squares[i] : i }
+            <Square sqid={ i }
+                    takenBy={ this.state.squares[i] }
                     onClick={() => this.handleClick(i)}
             />
         );
@@ -29,13 +30,6 @@ class Board extends React.Component {
         state.squares[i] = nextPlayer(this.state.isXNext);
         state.isXNext = !this.state.isXNext;
         this.setState(state);
-
-        /*
-        // Alternatively, copy squares assuming that that all properties are known
-        const squares = this.state.squares.slice();
-        squares[i] = 'X';
-        this.setState({squares: squares});
-        */
     }
 
     // when does render get called?
